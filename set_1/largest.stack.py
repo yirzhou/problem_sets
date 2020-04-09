@@ -24,6 +24,9 @@ class Stack(object):
         return self.items[-1]
 
 class MaxStack(object):
+    """It takes O(1) to get the max value in the stack.
+    Albeit it requires O(m) extra space where m is the number of operations.
+    """
     def __init__(self):
         self.stack = Stack()
         self.maxes = Stack()
