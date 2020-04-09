@@ -32,7 +32,7 @@ class Solution(object):
     def print_list(self, list_node):
         head = list_node
         arr = []
-        while(head.next):
+        while(head):
             arr.append(head.val)
             head = head.next
 
