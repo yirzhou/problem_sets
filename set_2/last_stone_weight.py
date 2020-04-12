@@ -4,6 +4,9 @@ class Solution(object):
     def __init__(self): self.heap = []
 
     def last_stone_weight(self, stones):
+        if len(stones) == 0: return None
+        if len(stones) == 1: return stones[0]
+        
         self.heap.clear()
         for stone in stones: heapq.heappush(self.heap, -1*stone)
 
@@ -14,7 +17,7 @@ class Solution(object):
             result = abs(stone1-stone2)
             if result > 0: heapq.heappush(self.heap, -1*result)
         
-        return -1*heapq.heappop(self.heap)
+        return -1*heapq.heappop(self.heap) if len(self.heap) else 0
 
 def main():
     print(Solution().last_stone_weight([2,7,4,1,8,1]))
