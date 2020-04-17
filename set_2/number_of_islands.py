@@ -56,7 +56,6 @@ class Solution:
             self.stack.append((y, x+1))
             self.visited.add((y, x+1))
         
-
 class Test(unittest.TestCase):
     
     def test_one_island(self):
