@@ -76,6 +76,29 @@ class ShortestPath(object):
         if m+1 < self.m: heapq.heappush(self.heap, (cost_so_far+grid[m+1][n], m+1, n))
         if n+1 < self.n: heapq.heappush(self.heap, (cost_so_far+grid[m][n+1], m, n+1))
 
+class GreedySolution(object):
+    def __init__(self):
+        return
+
+    def min_path_sum(self, grid):
+        '''A bottom up approach.
+        '''
+        m = len(grid)
+        n = len(grid[0])
+        pre = [grid[0][0]] * m
+        cur = [0] * m
+        
+        for i in range(1, m):
+            pre[i] = pre[i - 1] + grid[i][0]
+            
+        for i in range(1, n):
+            cur[0] = pre[0] + grid[0][i]
+            for j in range(1, m):
+                cur[j] = min(cur[j - 1], pre[j]) + grid[j][i]
+            pre, cur = cur, pre
+        
+        return pre[m - 1]
+
 class Test(unittest.TestCase):
     def test_large_grid(self):
         self.assertEqual(47, ShortestPath().min_path_sum([[1,4,8,6,2,2,1,7],[4,7,3,1,4,5,5,1],[8,8,2,1,1,8,0,1],[8,9,2,9,8,0,8,9],[5,7,5,7,1,8,5,5],[7,0,9,4,5,6,5,6],[4,9,9,7,9,1,9,0]]))
