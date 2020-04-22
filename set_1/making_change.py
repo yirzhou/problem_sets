@@ -34,10 +34,6 @@ class Solution(object):
             self.__change_combos(i, target-coin, stack)
             stack.pop()
         return 
-    
-    def __combine_list(self, combo, stack):
-        for item in stack:
-            for elem in combo: item.append(elem)
 
 def main():
     solution = Solution()

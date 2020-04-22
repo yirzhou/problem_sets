@@ -34,6 +34,4 @@ class Solution:
             if diff in cache: count += cache[diff]
         
         return count
-
-        
         
