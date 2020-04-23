@@ -47,7 +47,6 @@ class Solution:
             remained = limit - heavy
             if light <= remained: weights[light] -= 1
             
-
         return count
 
 print(Solution().num_rescue_boats_faster([2,49,10,7,11,41,47,2,22,6,13,12,33,18,10,26,2,6,50,10], 50))
