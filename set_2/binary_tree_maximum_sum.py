@@ -12,7 +12,6 @@ class Solution:
         self.__max_path_sum(root)
         return self.cur_max
         
-        
     def __max_path_sum(self, node):
         '''The intuitive recursive solution.
         At each node, the current max could be one of the following:
