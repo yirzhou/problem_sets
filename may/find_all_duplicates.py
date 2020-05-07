@@ -1,5 +1,5 @@
 class Solution:
-    """Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), 
+    """442. Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), 
     some elements appear twice and others appear once.
     Find all the elements that appear twice in this array."""
     def find_duplicates(self, nums: List[int]) -> List[int]:
