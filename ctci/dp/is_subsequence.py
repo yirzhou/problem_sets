@@ -13,3 +13,4 @@ class Solution:
             if char == s[cur_idx]: cur_idx += 1
             if cur_idx == end+1: return True
         return False
+        
