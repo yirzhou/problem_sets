@@ -11,33 +11,32 @@ class Solution:
         self.memo = {}
         
     def PredictTheWinner(self, nums: List[int]) -> bool:
-        self.memo[1].clear()
-        self.memo[-1].clear()
-        return self.__predict(nums,0,len(nums)-1,1)>=0
+        self.memo.clear()
+        return self.__predict(nums,0,len(nums)-1)>=0
         
-    def __predict(self, nums, lo, hi, turn):
+    def __predict(self, nums, lo, hi):
         """Memoized solution using recursion. The idea is that
         when it is player one's turn, it adds the maximum number to 
         the sum; otherwise, player two will want to minimize the sum
         by subtracting the maximum number from the sum. 
 
-        "turn" indicates whose turn it is. Without memoization, it would
+        Without memoization, it would
         take O(2^n) time. 
+        
+        With memoization, it would take O(n^2) time. It would take O(n^2) time
+        to fill the memo, essentially by getting all of the subarrays. 
         """
         
         if lo == hi: 
-            self.memo[turn][(lo,hi)] = turn*nums[lo]
-            return self.memo[turn][(lo,hi)]
-        
+            self.memo[(lo,hi)] = nums[lo]
+            return self.memo[(lo,hi)]
         else:
-            left = turn*nums[lo]
-            right = turn*nums[hi]
+            left = nums[lo]
+            right = nums[hi]
             
-            if (lo+1,hi) in self.memo[-turn]: left += self.memo[-turn][(lo+1,hi)]
-            else: left += self.__predict(nums,lo+1,hi,-turn)
-            if (lo,hi-1) in self.memo[-turn]: right += self.memo[-turn][(lo,hi-1)]
-            else: right += self.__predict(nums,lo,hi-1,-turn)
-            
-            self.memo[turn][(lo,hi)] = turn*max(turn*left, turn*right)
-            
-            return self.memo[turn][(lo,hi)]
+            if (lo+1, hi) in self.memo: left -= self.memo[(lo+1,hi)]
+            else: left -= self.__predict(nums,lo+1,hi)
+            if (lo, hi-1) in self.memo: right -= self.memo[(lo,hi-1)]
+            else: right -= self.__predict(nums,lo,hi-1)
+            self.memo[(lo,hi)] = max(left,right)
+            return self.memo[(lo,hi)]
