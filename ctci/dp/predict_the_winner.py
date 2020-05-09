@@ -11,8 +11,18 @@ class Solution:
         self.memo = {}
         
     def PredictTheWinner(self, nums: List[int]) -> bool:
-        self.memo.clear()
-        return self.__predict(nums,0,len(nums)-1)>=0
+        """Dynamic programming: 
+        The idea is this equation: dp[x, y] = max(nums[x]-dp[x+1, y], nums[y]-dp[x, y-1])
+        """
+        length = len(nums)
+        dp = [[0 for _ in range(length)] for _ in range(length)]
+        
+        for begin in range(length-2, -1, -1):
+            for end in range(begin+1, length):
+                left_max = nums[begin]-dp[begin+1][end]
+                right_max = nums[end]-dp[begin][end-1]
+                dp[begin][end] = max(left_max, right_max)
+        return dp[0][length-1] >= 0
         
     def __predict(self, nums, lo, hi):
         """Memoized solution using recursion. The idea is that
@@ -40,3 +50,4 @@ class Solution:
             else: right -= self.__predict(nums,lo,hi-1)
             self.memo[(lo,hi)] = max(left,right)
             return self.memo[(lo,hi)]
+            
