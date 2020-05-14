@@ -74,7 +74,7 @@ class Test(unittest.TestCase):
 
     def test_leaf_heights_differ_by_one(self):
         tree = Test.BinaryTreeNode(6)
-        left = tree.insert_left(1)
+        tree.insert_left(1)
         right = tree.insert_right(0)
         right.insert_right(7)
         result = is_balanced(tree)
@@ -82,7 +82,7 @@ class Test(unittest.TestCase):
 
     def test_leaf_heights_differ_by_two(self):
         tree = Test.BinaryTreeNode(6)
-        left = tree.insert_left(1)
+        tree.insert_left(1)
         right = tree.insert_right(0)
         right_right = right.insert_right(7)
         right_right.insert_right(8)
@@ -91,7 +91,7 @@ class Test(unittest.TestCase):
 
     def test_three_leaves_total(self):
         tree = Test.BinaryTreeNode(1)
-        left = tree.insert_left(5)
+        tree.insert_left(5)
         right = tree.insert_right(9)
         right.insert_left(8)
         right.insert_right(5)
@@ -100,7 +100,7 @@ class Test(unittest.TestCase):
 
     def test_both_subtrees_superbalanced(self):
         tree = Test.BinaryTreeNode(1)
-        left = tree.insert_left(5)
+        tree.insert_left(5)
         right = tree.insert_right(9)
         right_left = right.insert_left(8)
         right.insert_right(5)
