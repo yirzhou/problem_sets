@@ -20,3 +20,4 @@ class Solution:
             total += num
             
         return max_sum if max_sum < 0 else max(max_sum, total-min_sum)
+        
