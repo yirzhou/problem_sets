@@ -3,6 +3,7 @@ class Solution:
     def count_primes(self, n: int) -> int:
         """Sieve of Eratosthenes.
         - Time: O(n*sqrt(n))
+        - Space: O(n)
         """
         marked = [False]*n
         primes = 0
