@@ -18,4 +18,4 @@ class Solution:
                 dp[i + 1][j + 1] = 1 + dp[i][j] if c == d else max(dp[i][j + 1], dp[i + 1][j])
         return dp[-1][-1]
 
-print(Solution().longestCommonSubsequence("pmjghexybyrgzczy", "hafcdqbgncrcbihkd"))
+print(Solution().longest_common_subsequence("pmjghexybyrgzczy", "hafcdqbgncrcbihkd"))
