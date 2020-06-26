@@ -40,3 +40,4 @@ class Solution:
 
     def reduce(self, digits):
         return int("".join(map(str, digits))) 
+        
