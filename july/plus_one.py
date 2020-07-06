@@ -17,3 +17,4 @@ class Solution:
             res[0] = 0
             res.appendleft(1)
         return list(res)
+        
